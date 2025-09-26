@@ -23,8 +23,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         overlayContainerView.layer.cornerRadius = 10
     }
 
-    func prepareCell(item: Overlay){
+    func prepareCell(item: Overlay, model: HomeUserModel){
         overlayTitleLabel.text = item.overlayName
+        overlayContainerView.layer.borderWidth = item.overlayName == model.name ? 2 : 0
+        overlayContainerView.layer.borderColor = item.overlayName == model.name ? UIColor.systemBlue.cgColor : UIColor.clear.cgColor
     }
     
 }

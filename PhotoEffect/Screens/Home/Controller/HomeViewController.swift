@@ -52,8 +52,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.cellName, for: indexPath) as! HomeCollectionViewCell
-        cell.prepareCell(item: homeViewModel.cellForItemAt(indexPath: indexPath))
+        cell.prepareCell(item: homeViewModel.cellForItemAt(indexPath: indexPath), model: homeViewModel.userModel)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItemName = homeViewModel.cellForItemAt(indexPath: indexPath).overlayName
+        homeViewModel.userModel.name = selectedItemName
+        collectionView.reloadData()
     }
 }
 

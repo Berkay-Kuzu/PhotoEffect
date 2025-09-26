@@ -11,6 +11,8 @@ class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
     
+    var userModel = HomeUserModel(name: nil)
+    
     var isLoading = false {
         didSet {
             self.delegate?.handleHomeViewModelOutput(output: .showLoader(status: isLoading))
