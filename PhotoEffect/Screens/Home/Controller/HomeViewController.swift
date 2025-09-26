@@ -40,6 +40,9 @@ extension HomeViewController: HomeViewModelDelegate {
                 break
             case .showAlert(let title):
                 AlertManager.showAlert(title: title, message: "", destinationVC: self)
+            case .reloadItem(index: let index):
+                let indexPath = IndexPath(row: index, section: 0)
+                homeCollectionView.reloadItems(at: [indexPath])
             }
         }
     }

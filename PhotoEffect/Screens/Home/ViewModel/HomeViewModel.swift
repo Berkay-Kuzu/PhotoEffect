@@ -37,9 +37,23 @@ class HomeViewModel {
             switch result {
             case .success(let success):
                 self.overlayItems = success
+                self.fetchImages()
                 print("overlay items: \(success)")
             case .failure(let failure):
                 self.delegate?.handleHomeViewModelOutput(output: .showAlert(title: failure.errorDescription))
+            }
+        }
+    }
+    
+    func fetchImages() {
+        Task {
+            for (index, item) in overlayItems.enumerated() {
+                if let image = await ImageDownloaderManager.shared.downloadImage(from: item.overlayPreviewIconUrl) {
+                    var updatedItem = item
+                    updatedItem.downloadedImage = image
+                    overlayItems[index] = updatedItem
+                    self.delegate?.handleHomeViewModelOutput(output: .reloadItem(index: index))
+                }
             }
         }
     }

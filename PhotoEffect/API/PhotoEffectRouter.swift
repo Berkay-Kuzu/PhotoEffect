@@ -12,7 +12,7 @@ protocol URLRequestConvertible {
 }
 
 struct APIConfig {
-    static let baseURL = "https://lyrebirdstudio.s3-us-west-2.amazonaws.com/candidates/overla.json"
+    static let baseURL = "https://lyrebirdstudio.s3-us-west-2.amazonaws.com/candidates/overlay.json"
 }
 
 enum NetworkError: Error {
