@@ -5,7 +5,7 @@
 //  Created by Berkay on 26.09.2025.
 //
 
-import Foundation
+import UIKit
 
 class HomeViewModel {
     
@@ -39,5 +39,22 @@ class HomeViewModel {
                 self.delegate?.handleHomeViewModelOutput(output: .showAlert(title: failure.localizedDescription))
             }
         }
+    }
+    
+    func numberOfItemsInSection() ->Int {
+        overlayItems.count
+    }
+    
+    func cellForItemAt(indexPath: IndexPath) -> Overlay {
+        overlayItems[indexPath.row]
+    }
+    
+    func sizeForItemAt(collectionView: UICollectionView) -> CGSize {
+        let width = (collectionView.frame.size.width - 50) / 5
+        return CGSize(width: width, height: width + 30)
+    }
+    
+    func insetForSectionAt() -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }

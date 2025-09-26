@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,15 +48,48 @@
                                     <constraint firstAttribute="trailing" secondItem="VuK-Bl-TJ7" secondAttribute="trailing" constant="16" id="eFW-Fe-Vws"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZsB-oU-Ruw">
+                                <rect key="frame" x="0.0" y="690" width="390" height="120"/>
+                                <color key="backgroundColor" name="main_dark_gray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="9ak-lV-Qds"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Myc-mX-fhp">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zmF-vd-VLl">
+                                        <rect key="frame" x="0.0" y="-4" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qmj-Kg-sOT">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dKf-G0-9ti"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vgy-bS-r1o"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZsB-oU-Ruw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1iI-o8-jc0"/>
                             <constraint firstItem="hJG-KC-0rH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3g7-vg-yxY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZsB-oU-Ruw" secondAttribute="trailing" id="BFY-02-HW7"/>
+                            <constraint firstItem="ZsB-oU-Ruw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KOs-2I-wKl"/>
                             <constraint firstItem="hJG-KC-0rH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mai-Pg-2lG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hJG-KC-0rH" secondAttribute="trailing" id="qF4-LK-gE4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="homeCollectionView" destination="ZsB-oU-Ruw" id="C18-hn-DNW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

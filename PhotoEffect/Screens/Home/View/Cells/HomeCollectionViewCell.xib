@@ -17,19 +17,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEH-8J-hJO">
-                        <rect key="frame" x="10" y="328" width="357" height="25"/>
+                        <rect key="frame" x="10" y="333" width="357" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="u7O-bt-EA3"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-29-9TE" userLabel="ContainerView">
-                        <rect key="frame" x="0.0" y="0.0" width="377" height="323"/>
+                        <rect key="frame" x="0.0" y="0.0" width="377" height="328"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iCV-dZ-yTe">
-                                <rect key="frame" x="0.0" y="0.0" width="377" height="323"/>
+                                <rect key="frame" x="0.0" y="0.0" width="377" height="328"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,7 +50,7 @@
                 <constraint firstItem="gSC-29-9TE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Qad-12-maJ"/>
                 <constraint firstItem="gSC-29-9TE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SAo-SD-Wds"/>
                 <constraint firstItem="PEH-8J-hJO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="bdg-iY-7Pf"/>
-                <constraint firstAttribute="bottom" secondItem="PEH-8J-hJO" secondAttribute="bottom" constant="5" id="ubQ-Og-8W4"/>
+                <constraint firstAttribute="bottom" secondItem="PEH-8J-hJO" secondAttribute="bottom" id="ubQ-Og-8W4"/>
             </constraints>
             <size key="customSize" width="377" height="358"/>
             <connections>
