@@ -39,7 +39,7 @@ extension HomeViewController: HomeViewModelDelegate {
 //                homeActivityIndicator.isHidden = !status
                 break
             case .showAlert(let title):
-                break
+                AlertManager.showAlert(title: title, message: "", destinationVC: self)
             }
         }
     }

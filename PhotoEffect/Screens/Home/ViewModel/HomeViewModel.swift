@@ -39,7 +39,7 @@ class HomeViewModel {
                 self.overlayItems = success
                 print("overlay items: \(success)")
             case .failure(let failure):
-                self.delegate?.handleHomeViewModelOutput(output: .showAlert(title: failure.localizedDescription))
+                self.delegate?.handleHomeViewModelOutput(output: .showAlert(title: failure.errorDescription))
             }
         }
     }

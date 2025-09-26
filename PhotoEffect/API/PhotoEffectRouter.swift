@@ -12,7 +12,7 @@ protocol URLRequestConvertible {
 }
 
 struct APIConfig {
-    static let baseURL = "https://lyrebirdstudio.s3-us-west-2.amazonaws.com/candidates/overlay.json"
+    static let baseURL = "https://lyrebirdstudio.s3-us-west-2.amazonaws.com/candidates/overla.json"
 }
 
 enum NetworkError: Error {
@@ -20,6 +20,19 @@ enum NetworkError: Error {
     case requestFailed(statusCode: Int)
     case invalidResponse
     case dataConversionFailure
+    
+    var errorDescription: String {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .requestFailed(let statusCode):
+            return "Request is failed with status code: \(statusCode)"
+        case .invalidResponse:
+            return "Invalid Response"
+        case .dataConversionFailure:
+            return "Data conversion failure"
+        }
+    }
 }
 
 enum PokemonRouter: URLRequestConvertible {
