@@ -7,7 +7,9 @@
 
 import Foundation
 
-
+protocol HomeViewModelDelegate: AnyObject {
+    func handleHomeViewModelOutput(output: HomeViewModelOutput)
+}
 
 enum HomeViewModelOutput {
     case reloadData
