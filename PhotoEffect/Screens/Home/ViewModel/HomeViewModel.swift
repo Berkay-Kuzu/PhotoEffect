@@ -7,4 +7,11 @@
 
 import Foundation
 
+
+
+enum HomeViewModelOutput {
+    case reloadData
+    case showLoader(status: Bool)
+}
+
 class HomeViewModel {}
