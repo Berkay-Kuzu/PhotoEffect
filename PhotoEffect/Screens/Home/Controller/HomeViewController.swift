@@ -8,12 +8,21 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    let homeViewModel = HomeViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        applyDelegate()
     }
-
-
+    
+    func applyDelegate(){
+        homeViewModel.delegate = self
+    }
 }
 
+extension HomeViewController: HomeViewModelDelegate {
+    func handleHomeViewModelOutput(output: HomeViewModelOutput) {
+        //
+    }
+}
