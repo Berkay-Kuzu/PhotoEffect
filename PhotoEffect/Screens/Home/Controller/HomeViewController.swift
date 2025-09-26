@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    
+   
     let homeViewModel = HomeViewModel()
 
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ extension HomeViewController: HomeViewModelDelegate {
             case .reloadData:
                 homeCollectionView.reloadData()
             case .showLoader(let status):
+//                homeActivityIndicator.isHidden = !status
                 break
             case .showAlert(let title):
                 break

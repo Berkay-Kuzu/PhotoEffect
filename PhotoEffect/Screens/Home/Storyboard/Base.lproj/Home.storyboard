@@ -75,15 +75,36 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="vgy-bS-r1o"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-v9-j5S" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="97" width="390" height="593"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_image" translatesAutoresizingMaskIntoConstraints="NO" id="9bs-Sl-yFC">
+                                        <rect key="frame" x="0.0" y="146.66666666666663" width="390" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="WPE-WI-yu5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerX" secondItem="VHb-v9-j5S" secondAttribute="centerX" id="F7C-yb-Yx3"/>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="width" secondItem="VHb-v9-j5S" secondAttribute="width" id="H5v-Sb-MTS"/>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerY" secondItem="VHb-v9-j5S" secondAttribute="centerY" id="wOm-tg-8ir"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZsB-oU-Ruw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1iI-o8-jc0"/>
                             <constraint firstItem="hJG-KC-0rH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3g7-vg-yxY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VHb-v9-j5S" secondAttribute="trailing" id="6Xw-4S-ILr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZsB-oU-Ruw" secondAttribute="trailing" id="BFY-02-HW7"/>
+                            <constraint firstItem="VHb-v9-j5S" firstAttribute="top" secondItem="hJG-KC-0rH" secondAttribute="bottom" id="BHN-2b-gPi"/>
+                            <constraint firstItem="ZsB-oU-Ruw" firstAttribute="top" secondItem="VHb-v9-j5S" secondAttribute="bottom" id="Isz-CR-FsS"/>
                             <constraint firstItem="ZsB-oU-Ruw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KOs-2I-wKl"/>
                             <constraint firstItem="hJG-KC-0rH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mai-Pg-2lG"/>
+                            <constraint firstItem="VHb-v9-j5S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gPj-uy-bFC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hJG-KC-0rH" secondAttribute="trailing" id="qF4-LK-gE4"/>
                         </constraints>
                     </view>
@@ -99,6 +120,7 @@
     <resources>
         <image name="check_image" width="512" height="512"/>
         <image name="close_button_image" width="40" height="40"/>
+        <image name="example_image" width="5660" height="3773"/>
         <namedColor name="main_dark_gray">
             <color red="0.26666666666666666" green="0.26666666666666666" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
