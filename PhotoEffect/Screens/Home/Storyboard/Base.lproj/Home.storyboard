@@ -84,11 +84,19 @@
                                             <constraint firstAttribute="height" constant="300" id="WPE-WI-yu5"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOO-uf-RjG" userLabel="DraggableView" customClass="DraggableView" customModule="PhotoEffect" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="146.66666666666663" width="390" height="300"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerX" secondItem="VHb-v9-j5S" secondAttribute="centerX" id="F7C-yb-Yx3"/>
                                     <constraint firstItem="9bs-Sl-yFC" firstAttribute="width" secondItem="VHb-v9-j5S" secondAttribute="width" id="H5v-Sb-MTS"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerY" secondItem="9bs-Sl-yFC" secondAttribute="centerY" id="OiH-ca-gwR"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="height" secondItem="9bs-Sl-yFC" secondAttribute="height" id="T33-74-DCQ"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerX" secondItem="9bs-Sl-yFC" secondAttribute="centerX" id="ThI-3j-yZG"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="width" secondItem="9bs-Sl-yFC" secondAttribute="width" id="VQo-bo-9bL"/>
                                     <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerY" secondItem="VHb-v9-j5S" secondAttribute="centerY" id="wOm-tg-8ir"/>
                                 </constraints>
                             </view>
@@ -109,6 +117,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="draggableView" destination="bOO-uf-RjG" id="kod-jA-knw"/>
                         <outlet property="homeCollectionView" destination="ZsB-oU-Ruw" id="C18-hn-DNW"/>
                     </connections>
                 </viewController>

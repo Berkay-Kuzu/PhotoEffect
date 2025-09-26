@@ -28,7 +28,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         overlayContainerView.layer.borderWidth = item.overlayName == model.name ? 2 : 0
         overlayContainerView.layer.borderColor = item.overlayName == model.name ? UIColor.systemBlue.cgColor : UIColor.clear.cgColor
         
-        if let image = item.downloadedImage {
+        if let image = item.downloadedPreviewImage {
             overlayImageView.image = image
         } else {
             overlayImageView.image = AppImages.placeholder_image.image

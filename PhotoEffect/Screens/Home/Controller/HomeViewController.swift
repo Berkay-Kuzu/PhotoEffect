@@ -10,7 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
-   
+    @IBOutlet weak var draggableView: DraggableView!
+    
     let homeViewModel = HomeViewModel()
 
     override func viewDidLoad() {
@@ -25,6 +26,10 @@ class HomeViewController: UIViewController {
     
     func registerCell(){
         homeCollectionView.registerCell(with: HomeCollectionViewCell.self)
+    }
+    
+    func setupDraggableView(with item : Overlay){
+        draggableView.setupViews(overlayItem: item)
     }
 }
 
@@ -43,6 +48,9 @@ extension HomeViewController: HomeViewModelDelegate {
             case .reloadItem(index: let index):
                 let indexPath = IndexPath(row: index, section: 0)
                 homeCollectionView.reloadItems(at: [indexPath])
+            case .selectedItem(item: let item):
+                setupDraggableView(with: item)
+                homeCollectionView.reloadData()
             }
         }
     }
@@ -60,9 +68,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedItemName = homeViewModel.cellForItemAt(indexPath: indexPath).overlayName
-        homeViewModel.userModel.name = selectedItemName
-        collectionView.reloadData()
+        homeViewModel.didSelectItemAt(indexPath: indexPath)
     }
 }
 

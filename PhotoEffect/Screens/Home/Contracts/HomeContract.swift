@@ -16,4 +16,5 @@ enum HomeViewModelOutput {
     case showLoader(status: Bool)
     case showAlert(title: String)
     case reloadItem(index: Int)
+    case selectedItem(item: Overlay)
 }

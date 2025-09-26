@@ -37,7 +37,8 @@ class HomeViewModel {
             switch result {
             case .success(let success):
                 self.overlayItems = success
-                self.fetchImages()
+                self.fetchPreviewImagesConcurrently()
+                self.fetchImagesConcurrently()
                 print("overlay items: \(success)")
             case .failure(let failure):
                 self.delegate?.handleHomeViewModelOutput(output: .showAlert(title: failure.errorDescription))
@@ -45,14 +46,51 @@ class HomeViewModel {
         }
     }
     
-    func fetchImages() {
+    private func fetchPreviewImagesConcurrently() {
         Task {
-            for (index, item) in overlayItems.enumerated() {
-                if let image = await ImageDownloaderManager.shared.downloadImage(from: item.overlayPreviewIconUrl) {
-                    var updatedItem = item
-                    updatedItem.downloadedImage = image
-                    overlayItems[index] = updatedItem
-                    self.delegate?.handleHomeViewModelOutput(output: .reloadItem(index: index))
+            await withTaskGroup(of: (Int, UIImage?).self) { group in
+                for (index, item) in overlayItems.enumerated() {
+                    group.addTask {
+                        let image = await ImageDownloaderManager.shared.downloadImage(from: item.overlayPreviewIconUrl)
+                        return (index, image)
+                    }
+                }
+                
+                for await (index, image) in group {
+                    if let image {
+                        var updatedItem = overlayItems[index]
+                        updatedItem.downloadedPreviewImage = image
+                        overlayItems[index] = updatedItem
+                        
+                        await MainActor.run {
+                            self.delegate?.handleHomeViewModelOutput(output: .reloadItem(index: index))
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func fetchImagesConcurrently() {
+        Task {
+            await withTaskGroup(of: (Int, UIImage?).self) { group in
+                for (index, item) in overlayItems.enumerated() {
+                    group.addTask {
+                        let image = await ImageDownloaderManager.shared.downloadImage(from: item.overlayUrl)
+                        return (index, image)
+                    }
+                }
+                
+                for await (index, image) in group {
+                    if let image {
+                        var updatedItem = overlayItems[index]
+                        updatedItem.downloadedImage = image
+                        overlayItems[index] = updatedItem
+                        
+                        await MainActor.run {
+                            self.delegate?.handleHomeViewModelOutput(output: .reloadItem(index: index))
+                        }
+                    }
                 }
             }
         }
@@ -64,6 +102,12 @@ class HomeViewModel {
     
     func cellForItemAt(indexPath: IndexPath) -> Overlay {
         overlayItems[indexPath.row]
+    }
+    
+    func didSelectItemAt (indexPath: IndexPath) {
+        let selectedItem = cellForItemAt(indexPath: indexPath)
+        userModel.name = selectedItem.overlayName
+        self.delegate?.handleHomeViewModelOutput(output: .selectedItem(item: selectedItem))
     }
     
     func sizeForItemAt(collectionView: UICollectionView) -> CGSize {

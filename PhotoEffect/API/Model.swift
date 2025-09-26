@@ -13,6 +13,7 @@ struct Overlay: Codable {
     let overlayPreviewIconUrl: String
     let overlayUrl: String
     
+    var downloadedPreviewImage: UIImage? = nil
     var downloadedImage: UIImage? = nil
     
     enum CodingKeys: String, CodingKey {
