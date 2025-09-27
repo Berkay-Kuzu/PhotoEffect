@@ -21,23 +21,30 @@ final class DraggableView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        guard let item = self.overlayItem else { return }
-        guard let image = item.downloadedImage else { return }
-        self.draggableImageView.image = image
+        draggableImageView.frame = self.bounds
+        if let item = overlayItem, let image = item.downloadedImage {
+            draggableImageView.image = image
+        }
     }
     
     func setupViews(overlayItem: Overlay?) {
         self.overlayItem = overlayItem
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(imageViewTapped))
+        
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
+        self.addSubview(draggableImageView)
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.cancelsTouchesInView = false
         self.addGestureRecognizer(panGestureRecognizer)
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         pinchGesture.delegate = self
         self.addGestureRecognizer(pinchGesture)
-        self.clipsToBounds = false
-        self.layer.masksToBounds = false
-        self.addSubview(draggableImageView)
+        
+        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
+        rotateGesture.delegate = self
+        self.addGestureRecognizer(rotateGesture)
     }
     
     @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
@@ -52,7 +59,7 @@ final class DraggableView: UIView {
         gesture.rotation = 0
     }
     
-    @objc private func imageViewTapped(gesture: UIPanGestureRecognizer) {
+    @objc private func handlePanGesture(gesture: UIPanGestureRecognizer) {
         guard let superview = self.superview else { return }
 
         switch gesture.state {

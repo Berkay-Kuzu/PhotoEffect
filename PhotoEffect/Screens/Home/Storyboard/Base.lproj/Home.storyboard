@@ -87,17 +87,21 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOO-uf-RjG" userLabel="DraggableView" customClass="DraggableView" customModule="PhotoEffect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="146.66666666666663" width="390" height="300"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="ykA-av-0ur"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerX" secondItem="VHb-v9-j5S" secondAttribute="centerX" id="F7C-yb-Yx3"/>
-                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="width" secondItem="VHb-v9-j5S" secondAttribute="width" id="H5v-Sb-MTS"/>
-                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerY" secondItem="9bs-Sl-yFC" secondAttribute="centerY" id="OiH-ca-gwR"/>
-                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="height" secondItem="9bs-Sl-yFC" secondAttribute="height" id="T33-74-DCQ"/>
-                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerX" secondItem="9bs-Sl-yFC" secondAttribute="centerX" id="ThI-3j-yZG"/>
-                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="width" secondItem="9bs-Sl-yFC" secondAttribute="width" id="VQo-bo-9bL"/>
-                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerY" secondItem="VHb-v9-j5S" secondAttribute="centerY" id="wOm-tg-8ir"/>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerX" secondItem="VHb-v9-j5S" secondAttribute="centerX" id="3Ix-dF-BZj"/>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="leading" secondItem="VHb-v9-j5S" secondAttribute="leading" id="5bv-iA-shI"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="leading" secondItem="VHb-v9-j5S" secondAttribute="leading" id="Hqq-zE-xHt"/>
+                                    <constraint firstItem="9bs-Sl-yFC" firstAttribute="centerY" secondItem="VHb-v9-j5S" secondAttribute="centerY" id="b5d-pZ-yhh"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerY" secondItem="VHb-v9-j5S" secondAttribute="centerY" id="fb9-V1-Pp2"/>
+                                    <constraint firstItem="bOO-uf-RjG" firstAttribute="centerX" secondItem="VHb-v9-j5S" secondAttribute="centerX" id="hoe-Qy-J9g"/>
+                                    <constraint firstAttribute="trailing" secondItem="bOO-uf-RjG" secondAttribute="trailing" id="qhM-5Y-Pkw"/>
+                                    <constraint firstAttribute="trailing" secondItem="9bs-Sl-yFC" secondAttribute="trailing" id="yKv-Qt-mm5"/>
                                 </constraints>
                             </view>
                         </subviews>
