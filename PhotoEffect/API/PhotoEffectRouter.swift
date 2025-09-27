@@ -35,7 +35,7 @@ enum NetworkError: Error {
     }
 }
 
-enum PokemonRouter: URLRequestConvertible {
+enum PhotoEffectRouter: URLRequestConvertible {
     
     case getAllOverlayItems
     
