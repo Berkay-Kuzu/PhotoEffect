@@ -10,9 +10,11 @@ import UIKit
 class AlertManager {
     
    static func showAlert(title :String , message: String, destinationVC: UIViewController) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(action)
-        destinationVC.present(alert, animated: true)
+       DispatchQueue.main.async {
+           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           let action = UIAlertAction(title: "OK", style: .default)
+           alert.addAction(action)
+           destinationVC.present(alert, animated: true)
+       }
     }
 }

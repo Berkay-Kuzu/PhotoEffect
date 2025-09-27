@@ -37,6 +37,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="check_image"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHJ-Aw-IFp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="main_dark_gray"/>
@@ -123,6 +126,8 @@
                     <connections>
                         <outlet property="draggableView" destination="bOO-uf-RjG" id="kod-jA-knw"/>
                         <outlet property="homeCollectionView" destination="ZsB-oU-Ruw" id="C18-hn-DNW"/>
+                        <outlet property="homeImageView" destination="9bs-Sl-yFC" id="QxQ-ob-HhS"/>
+                        <outlet property="saveButton" destination="VuK-Bl-TJ7" id="9I5-wA-XDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

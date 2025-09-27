@@ -13,6 +13,12 @@ class HomeViewModel {
     
     var userModel = HomeUserModel(name: nil)
     
+    var selectedOverlayItem: Overlay?
+    
+    var downloadedImage: UIImage? {
+        selectedOverlayItem?.downloadedImage
+    }
+    
     var isLoading = false {
         didSet {
             self.delegate?.handleHomeViewModelOutput(output: .showLoader(status: isLoading))
@@ -46,7 +52,7 @@ class HomeViewModel {
         }
     }
     
-    private func fetchPreviewImagesConcurrently() {
+    func fetchPreviewImagesConcurrently() {
         Task {
             await withTaskGroup(of: (Int, UIImage?).self) { group in
                 for (index, item) in overlayItems.enumerated() {
@@ -71,7 +77,7 @@ class HomeViewModel {
         }
     }
 
-    private func fetchImagesConcurrently() {
+    func fetchImagesConcurrently() {
         Task {
             await withTaskGroup(of: (Int, UIImage?).self) { group in
                 for (index, item) in overlayItems.enumerated() {
@@ -96,6 +102,13 @@ class HomeViewModel {
         }
     }
     
+    func handleSave(bottom: UIImage, top: UIImage, frame: CGRect, asPNG: Bool = false) -> URL? {
+        guard let combined = PhotoManager.shared.combine(bottomImage: bottom, topImage: top, frame: frame) else {
+            return nil
+        }
+        return PhotoManager.shared.saveImageToCache(combined, asPNG: asPNG)
+    }
+    
     func numberOfItemsInSection() ->Int {
         overlayItems.count
     }
@@ -106,6 +119,7 @@ class HomeViewModel {
     
     func didSelectItemAt (indexPath: IndexPath) {
         let selectedItem = cellForItemAt(indexPath: indexPath)
+        selectedOverlayItem = selectedItem
         userModel.name = selectedItem.overlayName
         self.delegate?.handleHomeViewModelOutput(output: .selectedItem(item: selectedItem))
     }

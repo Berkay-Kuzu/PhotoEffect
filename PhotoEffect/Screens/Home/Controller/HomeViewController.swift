@@ -11,13 +11,16 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var draggableView: DraggableView!
+    @IBOutlet weak var homeImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIButton!
     
     let homeViewModel = HomeViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         applyDelegate()
         registerCell()
+        updateUI()
     }
     
     func applyDelegate(){
@@ -30,6 +33,23 @@ class HomeViewController: UIViewController {
     
     func setupDraggableView(with item : Overlay){
         draggableView.setupViews(overlayItem: item)
+    }
+    
+    func updateUI(){
+        saveButton.isHidden = homeViewModel.userModel.name == nil ? true : false
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        guard let bottomImage = homeImageView.image,
+              let topImage = homeViewModel.downloadedImage else { return }
+        
+        if let savedURL = homeViewModel.handleSave(bottom: bottomImage,
+                                                   top: topImage,
+                                                   frame: CGRect(x: 50, y: 50, width: 200, height: 200),
+                                                   asPNG: true) {
+            AlertManager.showAlert(title: "Success", message: "The image is saved: \(savedURL.lastPathComponent)", destinationVC: self)
+            print("✅ Kaydedildi: \(savedURL)")
+        }
     }
 }
 
@@ -50,6 +70,7 @@ extension HomeViewController: HomeViewModelDelegate {
                 homeCollectionView.reloadItems(at: [indexPath])
             case .selectedItem(item: let item):
                 setupDraggableView(with: item)
+                updateUI()
                 homeCollectionView.reloadData()
             }
         }
