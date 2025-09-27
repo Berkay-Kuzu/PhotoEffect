@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var draggableView: DraggableView!
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var homeActivityIndicator: UIActivityIndicatorView!
     
     let homeViewModel = HomeViewModel()
     
@@ -61,8 +62,7 @@ extension HomeViewController: HomeViewModelDelegate {
             case .reloadData:
                 homeCollectionView.reloadData()
             case .showLoader(let status):
-//                homeActivityIndicator.isHidden = !status
-                break
+                homeActivityIndicator.isHidden = !status
             case .showAlert(let title):
                 AlertManager.showAlert(title: title, message: "", destinationVC: self)
             case .reloadItem(index: let index):

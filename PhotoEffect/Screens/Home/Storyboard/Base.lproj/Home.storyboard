@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -107,6 +108,14 @@
                                     <constraint firstAttribute="trailing" secondItem="9bs-Sl-yFC" secondAttribute="trailing" id="yKv-Qt-mm5"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-QT-H4H">
+                                <rect key="frame" x="175" y="408.66666666666669" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fCb-Ia-BU2"/>
+                                    <constraint firstAttribute="width" constant="40" id="vQA-fp-Idz"/>
+                                </constraints>
+                                <color key="color" systemColor="systemPinkColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,15 +125,18 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VHb-v9-j5S" secondAttribute="trailing" id="6Xw-4S-ILr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZsB-oU-Ruw" secondAttribute="trailing" id="BFY-02-HW7"/>
                             <constraint firstItem="VHb-v9-j5S" firstAttribute="top" secondItem="hJG-KC-0rH" secondAttribute="bottom" id="BHN-2b-gPi"/>
+                            <constraint firstItem="8Pp-QT-H4H" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="F5i-12-9VD"/>
                             <constraint firstItem="ZsB-oU-Ruw" firstAttribute="top" secondItem="VHb-v9-j5S" secondAttribute="bottom" id="Isz-CR-FsS"/>
                             <constraint firstItem="ZsB-oU-Ruw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KOs-2I-wKl"/>
                             <constraint firstItem="hJG-KC-0rH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mai-Pg-2lG"/>
                             <constraint firstItem="VHb-v9-j5S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gPj-uy-bFC"/>
+                            <constraint firstItem="8Pp-QT-H4H" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pG7-ur-hNk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hJG-KC-0rH" secondAttribute="trailing" id="qF4-LK-gE4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="draggableView" destination="bOO-uf-RjG" id="kod-jA-knw"/>
+                        <outlet property="homeActivityIndicator" destination="8Pp-QT-H4H" id="OWx-CQ-geo"/>
                         <outlet property="homeCollectionView" destination="ZsB-oU-Ruw" id="C18-hn-DNW"/>
                         <outlet property="homeImageView" destination="9bs-Sl-yFC" id="QxQ-ob-HhS"/>
                         <outlet property="saveButton" destination="VuK-Bl-TJ7" id="9I5-wA-XDe"/>
@@ -142,5 +154,8 @@
         <namedColor name="main_dark_gray">
             <color red="0.26666666666666666" green="0.26666666666666666" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

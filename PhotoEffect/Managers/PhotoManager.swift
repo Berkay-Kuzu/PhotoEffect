@@ -29,7 +29,7 @@ class PhotoManager {
         let fileName = "combined_\(UUID().uuidString)." + (asPNG ? "png" : "jpg")
         let fileURL = cacheDirectory.appendingPathComponent(fileName)
         
-        let imageData = asPNG ? image.pngData() : image.jpegData(compressionQuality: 0.9)
+        let imageData = asPNG ? image.pngData() : image.jpegData(compressionQuality: 0.8)
         
         guard let data = imageData else { return nil }
         
