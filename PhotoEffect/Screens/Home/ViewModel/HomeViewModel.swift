@@ -109,6 +109,15 @@ class HomeViewModel {
         return PhotoManager.shared.saveImageToCache(combined, asPNG: asPNG)
     }
     
+    func updateHistogram(bottomImage: UIImage, topImage: UIImage) {
+        guard let combinedImage = PhotoManager.shared.combine(bottomImage: bottomImage,
+                                                             topImage: topImage,
+                                                             frame: CGRect(x: 50, y: 50, width: 200, height: 200)) else { return }
+        
+        let histogram = PhotoManager.shared.calculateHistogram(for: combinedImage)
+        self.delegate?.handleHomeViewModelOutput(output: .histogram(item: histogram))
+    }
+    
     func numberOfItemsInSection() ->Int {
         overlayItems.count
     }

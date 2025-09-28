@@ -17,4 +17,5 @@ enum HomeViewModelOutput {
     case showAlert(title: String)
     case reloadItem(index: Int)
     case selectedItem(item: Overlay)
+    case histogram(item: (red: [Int], green: [Int], blue: [Int]))
 }

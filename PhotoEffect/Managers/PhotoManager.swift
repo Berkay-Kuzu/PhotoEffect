@@ -41,4 +41,68 @@ class PhotoManager {
             return nil
         }
     }
+    
+    func calculateHistogram(for image: UIImage) -> (red: [Int], green: [Int], blue: [Int]) {
+        guard let cgImage = image.cgImage else {
+            print("❌ Histogram: CGImage cannot be created")
+            return (red: Array(repeating: 0, count: 256),
+                   green: Array(repeating: 0, count: 256), 
+                   blue: Array(repeating: 0, count: 256))
+        }
+        
+        let width = cgImage.width
+        let height = cgImage.height
+        
+        guard width > 0 && height > 0 else {
+            print("❌ Histogram: Invalid image size")
+            return (red: Array(repeating: 0, count: 256),
+                   green: Array(repeating: 0, count: 256), 
+                   blue: Array(repeating: 0, count: 256))
+        }
+        
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * width
+        let bitsPerComponent = 8
+        
+        var pixelData = [UInt8](repeating: 0, count: width * height * bytesPerPixel)
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        guard let context = CGContext(data: &pixelData,
+                                     width: width,
+                                     height: height,
+                                     bitsPerComponent: bitsPerComponent,
+                                     bytesPerRow: bytesPerRow,
+                                     space: colorSpace,
+                                     bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+            print("❌ Histogram: Context cannot be created")
+            return (red: Array(repeating: 0, count: 256),
+                   green: Array(repeating: 0, count: 256), 
+                   blue: Array(repeating: 0, count: 256))
+        }
+        
+        context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        var redHistogram = Array(repeating: 0, count: 256)
+        var greenHistogram = Array(repeating: 0, count: 256)
+        var blueHistogram = Array(repeating: 0, count: 256)
+        
+        for i in stride(from: 0, to: pixelData.count - 3, by: 4) {
+            let red = Int(pixelData[i])
+            let green = Int(pixelData[i + 1])
+            let blue = Int(pixelData[i + 2])
+            
+            if red >= 0 && red < 256 {
+                redHistogram[red] += 1
+            }
+            if green >= 0 && green < 256 {
+                greenHistogram[green] += 1
+            }
+            if blue >= 0 && blue < 256 {
+                blueHistogram[blue] += 1
+            }
+        }
+        
+        print("✅ Histogram calculation is completed - Red: \(redHistogram.prefix(5)), Green: \(greenHistogram.prefix(5)), Blue: \(blueHistogram.prefix(5))")
+        return (red: redHistogram, green: greenHistogram, blue: blueHistogram)
+    }
 }
