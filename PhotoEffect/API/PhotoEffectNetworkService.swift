@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol PhotoEffectNetworkServiceProtocol {
-    func fetchOverlayItems() async throws -> Result<[Overlay], NetworkError>
-}
-
 class PhotoEffectNetworkService: BaseNetworkService<PhotoEffectRouter> {
     
     func fetchOverlayItems() async throws -> Result<[Overlay], NetworkError> {

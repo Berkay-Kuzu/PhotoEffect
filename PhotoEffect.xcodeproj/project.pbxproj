@@ -48,16 +48,6 @@
 			path = PhotoEffect;
 			sourceTree = "<group>";
 		};
-		F0E097332E86C31100BB0085 /* PhotoEffectTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PhotoEffectTests;
-			sourceTree = "<group>";
-		};
-		F0E0973D2E86C31100BB0085 /* PhotoEffectUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PhotoEffectUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				F0E0971C2E86C31000BB0085 /* PhotoEffect */,
-				F0E097332E86C31100BB0085 /* PhotoEffectTests */,
-				F0E0973D2E86C31100BB0085 /* PhotoEffectUITests */,
 				F0E0971B2E86C31000BB0085 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,9 +131,6 @@
 			dependencies = (
 				F0E097322E86C31100BB0085 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				F0E097332E86C31100BB0085 /* PhotoEffectTests */,
-			);
 			name = PhotoEffectTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +150,6 @@
 			);
 			dependencies = (
 				F0E0973C2E86C31100BB0085 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F0E0973D2E86C31100BB0085 /* PhotoEffectUITests */,
 			);
 			name = PhotoEffectUITests;
 			packageProductDependencies = (
