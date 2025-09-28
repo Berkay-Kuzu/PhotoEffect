@@ -8,10 +8,6 @@
 import Foundation
 @testable import PhotoEffect
 
-protocol PhotoEffectNetworkServiceProtocol {
-    func fetchOverlayItems() async throws -> Result<[Overlay], NetworkError>
-}
-
 final class MockPhotoEffectNetworkService: PhotoEffectNetworkServiceProtocol {
     
     var mockOverlays: [Overlay] = []
