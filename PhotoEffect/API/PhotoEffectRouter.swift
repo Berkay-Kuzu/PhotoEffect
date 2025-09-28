@@ -15,7 +15,7 @@ struct APIConfig {
     static let baseURL = "https://lyrebirdstudio.s3-us-west-2.amazonaws.com/candidates/overlay.json"
 }
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case invalidURL
     case requestFailed(statusCode: Int)
     case invalidResponse

@@ -8,29 +8,69 @@
 import XCTest
 @testable import PhotoEffect
 
-final class PhotoEffectTests: XCTestCase {
-
+final class PhotoEffectNetworkServiceTests: XCTestCase {
+    
+    var mockService: MockPhotoEffectNetworkService!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        mockService = MockPhotoEffectNetworkService()
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockService = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    @MainActor
+    func testFetchOverlayItemsSuccess() async throws {
+        // Given
+        let expectedOverlays = [
+            Overlay(
+                overlayId: 1,
+                overlayName: "Test Overlay 1",
+                overlayPreviewIconUrl: "https://example.com/icon1.png",
+                overlayUrl: "https://example.com/file1.png"
+            ),
+            Overlay(
+                overlayId: 2,
+                overlayName: "Test Overlay 2",
+                overlayPreviewIconUrl: "https://example.com/icon2.png",
+                overlayUrl: "https://example.com/file2.png"
+            )
+        ]
+        mockService.mockOverlays = expectedOverlays
+        
+        // When
+        let result = try await mockService.fetchOverlayItems()
+        
+        // Then
+        switch result {
+        case .success(let overlays):
+            XCTAssertEqual(overlays.count, 2)
+            XCTAssertEqual(overlays.first?.overlayName, "Test Overlay 1")
+            XCTAssertEqual(overlays.last?.overlayId, 2)
+        case .failure:
+            XCTFail("Beklenen başarı ama hata geldi")
         }
     }
-
+    
+    @MainActor
+    func testFetchOverlayItemsFailure() async throws {
+        // Given
+        mockService.shouldReturnError = true
+        mockService.errorToReturn = .invalidResponse
+        
+        // When
+        let result = try await mockService.fetchOverlayItems()
+        
+        // Then
+        switch result {
+        case .success:
+            XCTFail("Beklenen hata ama başarı geldi")
+        case .failure(let error):
+            XCTAssertEqual(error, .invalidResponse)
+            XCTAssertEqual(error.errorDescription, "Invalid Response")
+        }
+    }
 }
