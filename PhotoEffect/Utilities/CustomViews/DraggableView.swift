@@ -63,12 +63,7 @@ final class DraggableView: UIView {
         guard let superview = self.superview else { return }
 
         switch gesture.state {
-        case .began:
-            let translation = gesture.translation(in: superview)
-            let newCenter = CGPoint(x: self.center.x + translation.x, y: self.center.y + translation.y)
-            self.center = newCenter
-            gesture.setTranslation(.zero, in: superview)
-        case .changed:
+        case .began, .changed:
             let translation = gesture.translation(in: superview)
             let newCenter = CGPoint(x: self.center.x + translation.x, y: self.center.y + translation.y)
             self.center = newCenter

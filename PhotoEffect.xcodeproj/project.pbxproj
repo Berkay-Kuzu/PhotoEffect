@@ -173,6 +173,7 @@
 					};
 					F0E0972F2E86C31100BB0085 = {
 						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
 						TestTargetID = F0E097192E86C31000BB0085;
 					};
 					F0E097392E86C31100BB0085 = {
@@ -445,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CN94H2LDYJ;
@@ -454,6 +456,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.berkayKuzu.PhotoEffectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoEffect.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PhotoEffect";
@@ -464,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CN94H2LDYJ;
