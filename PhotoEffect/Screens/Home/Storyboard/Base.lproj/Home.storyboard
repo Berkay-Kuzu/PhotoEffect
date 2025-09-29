@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,15 +22,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-KC-0rH" userLabel="NavbarView">
                                 <rect key="frame" x="0.0" y="47" width="390" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3P-FQ-s64">
-                                        <rect key="frame" x="16" y="5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="EEI-AE-M09"/>
-                                            <constraint firstAttribute="height" constant="40" id="pWy-13-AOC"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="close_button_image"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuK-Bl-TJ7">
                                         <rect key="frame" x="334" y="5" width="40" height="40"/>
                                         <constraints>
@@ -47,8 +39,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9d4-H6-HpM"/>
                                     <constraint firstItem="VuK-Bl-TJ7" firstAttribute="centerY" secondItem="hJG-KC-0rH" secondAttribute="centerY" id="Atn-02-aM9"/>
-                                    <constraint firstItem="o3P-FQ-s64" firstAttribute="leading" secondItem="hJG-KC-0rH" secondAttribute="leading" constant="16" id="CYq-gw-1Zk"/>
-                                    <constraint firstItem="o3P-FQ-s64" firstAttribute="centerY" secondItem="hJG-KC-0rH" secondAttribute="centerY" id="Itf-1w-nhQ"/>
                                     <constraint firstAttribute="trailing" secondItem="VuK-Bl-TJ7" secondAttribute="trailing" constant="16" id="eFW-Fe-Vws"/>
                                 </constraints>
                             </view>
@@ -149,7 +139,6 @@
     </scenes>
     <resources>
         <image name="check_image" width="512" height="512"/>
-        <image name="close_button_image" width="40" height="40"/>
         <image name="example_image" width="5660" height="3773"/>
         <namedColor name="main_dark_gray">
             <color red="0.26666666666666666" green="0.26666666666666666" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
